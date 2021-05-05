@@ -2,4 +2,6 @@ version: 1
 service:
     name: first_service
     tools:
-        - {"category": "api_documentation", "url": "https://example.com"}
+        - category: api_documentation
+          url: https://example.com
+          name: my documentation name
