@@ -1,4 +1,5 @@
 version: 1
+description: hello world
 service:
     name: first_service
     tools:
