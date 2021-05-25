@@ -1,7 +1,7 @@
 version: 1
-description: hello world
 service:
     name: first_service
+    description: hello world
     tools:
         - category: api_documentation
           url: https://example.com
