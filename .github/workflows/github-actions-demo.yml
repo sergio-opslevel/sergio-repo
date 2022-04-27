@@ -11,11 +11,13 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
 
+
+      - run: service_name=$(jq .name package.json)
+
       - name: "Perform the check"
         run: |
-          service_name=$(jq .name package.json)
-
-          files=$(find . -name '*.yml' | grep -v '.github/workflows/') # exclude *this* file (the one you're reading)
+          # exclude *this* file (the one you're reading) since it's yml
+          files=$(find . -name '*.yml' | grep -v '.github/workflows/')
           grep --silent 'yarn test-audit' ${files}
           result=$?
 
