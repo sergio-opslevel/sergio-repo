@@ -5,16 +5,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-        service_name=$(jq .name package.json)
+          service_name=$(jq .name package.json)
 
-        files=$(find . -name '*.yml')
-        grep --silent 'yarn test-audit' ${files}
-        result=$?
+          files=$(find . -name '*.yml')
+          grep --silent 'yarn test-audit' ${files}
+          result=$?
 
-        if [ result ]; then
-          check_passed="true"
-        else
-          check_passed="false"
-        fi
-        payload={"\"service\": ${service_name}, \"has_yarn_test_audit\": $check_passed }"
-        curl -i -X POST -d "$payload" https://opslevel-sergio.ngrok.io/integrations/custom_event/50054f4a-5bd7-4bbb-b6cb-280b621ec3c3
+          if [ result ]; then
+            check_passed="true"
+          else
+            check_passed="false"
+          fi
+          payload={"\"service\": ${service_name}, \"has_yarn_test_audit\": $check_passed }"
+          curl -i -X POST -d "$payload" https://opslevel-sergio.ngrok.io/integrations/custom_event/50054f4a-5bd7-4bbb-b6cb-280b621ec3c3
