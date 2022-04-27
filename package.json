@@ -1,0 +1,7 @@
+{
+  "name": "sergio-repo",
+  "packageManager": "yarn@3.2.0",
+  "scripts": {
+    "test-audit": "echo LOOKS GOOD TO ME"
+  }
+}
