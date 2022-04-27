@@ -16,7 +16,6 @@ jobs:
 
       - name: "Perform the check"
         run: |
-          # exclude *this* file (the one you're reading) since it's yml
           files=$(find . -name '*.yml' | grep -v '.github/workflows/')
           grep --silent 'yarn test-audit' ${files}
           result=$?
