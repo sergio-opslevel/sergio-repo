@@ -1,10 +1,18 @@
 name: GitHub Actions Demo
-on: [push]
+on:
+  push:
+    branches:
+      - main
+      - master
 jobs:
   PoC-Repo-Search-Checks-As-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: "Perform the check"
+        run: |
           service_name=$(jq .name package.json)
 
           files=$(find . -name '*.yml')
