@@ -15,7 +15,7 @@ jobs:
         run: |
           service_name=$(jq .name package.json)
 
-          files=$(find . -name '*.yml')
+          files=$(find . -name '*.yml' | grep -v '.github/workflows/') # exclude *this* file (the one you're reading)
           grep --silent 'yarn test-audit' ${files}
           result=$?
 
