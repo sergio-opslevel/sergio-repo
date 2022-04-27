@@ -15,5 +15,8 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Where are we?
+        run: pwd
       - run: |
+          result=$(grep -r --silent 'yarn test-audit' ${{ github.workspace }}/*.yml )
           curl -i -X POST -d '{"service": "actions-poc", "has_yarn_test_audit": true}' https://opslevel-sergio.ngrok.io/integrations/custom_event/50054f4a-5bd7-4bbb-b6cb-280b621ec3c3
