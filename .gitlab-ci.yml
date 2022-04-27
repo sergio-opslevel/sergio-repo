@@ -5,4 +5,4 @@ example:
   stage: test
   script:
     - echo "ensure no security vulns, probably"
-    - yarn test-audit
+    - yarn nine-audit
