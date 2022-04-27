@@ -17,14 +17,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     ],\
     "dependencyTreeRoots": [\
       {\
-        "name": "sergio-repo",\
+        "name": "poc-service-name",\
         "reference": "workspace:."\
       }\
     ],\
     "enableTopLevelFallback": true,\
     "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
     "fallbackExclusionList": [\
-      ["sergio-repo", ["workspace:."]]\
+      ["poc-service-name", ["workspace:."]]\
     ],\
     "fallbackPool": [\
     ],\
@@ -37,11 +37,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "SOFT"\
         }]\
       ]],\
-      ["sergio-repo", [\
+      ["poc-service-name", [\
         ["workspace:.", {\
           "packageLocation": "./",\
           "packageDependencies": [\
-            ["sergio-repo", "workspace:."]\
+            ["poc-service-name", "workspace:."]\
           ],\
           "linkType": "SOFT"\
         }]\

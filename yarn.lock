@@ -4,8 +4,8 @@
 __metadata:
   version: 6
 
-"sergio-repo@workspace:.":
+"poc-service-name@workspace:.":
   version: 0.0.0-use.local
-  resolution: "sergio-repo@workspace:."
+  resolution: "poc-service-name@workspace:."
   languageName: unknown
   linkType: soft
