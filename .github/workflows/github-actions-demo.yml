@@ -13,6 +13,7 @@ jobs:
 
       - name: "Perform the check"
         run: |
+          # Search for a string in all yml files
           search_term="yarn test-audit"
           files=$(find . -name '*.yml')
 
