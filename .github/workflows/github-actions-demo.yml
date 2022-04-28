@@ -13,30 +13,22 @@ jobs:
 
       - name: "Perform the check"
         run: |
-          search_term='yarn test-audit'
+          search_term="yarn test-audit"
           files=$(find . -name '*.yml')
-
-          echo "SEARCH TERM: $search_term"
 
           service_name=$(jq .name package.json)
           echo -e "\nService name: ${service_name}\n"
 
           # Ensure *this* file (the one you're reading) is excluded since it will always match the search
           files=$(echo "${files}" | grep -v '.github/workflows/')
-          echo -e "files: ${files}\n"
+          # echo -e "Searching these files: ${files}\n"
 
-          if grep "${search_term}" ${files}; then
+          if grep --silent "${search_term}" ${files}; then
             check_passed="true"
           else
             check_passed="false"
           fi
           echo -e "Check passed: ${check_passed}\n"
-
-          echo "DEBUGGING:"
-          set +e
-          grep 'yarn test-audit' .gitlab-ci.yml
-          set -e
-          echo -e "\n"
 
           payload={"\"service\": ${service_name}, \"has_yarn_test_audit\": ${check_passed} }"
           curl -i -X POST -d "${payload}" https://opslevel-sergio.ngrok.io/integrations/custom_event/50054f4a-5bd7-4bbb-b6cb-280b621ec3c3
