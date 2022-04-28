@@ -34,7 +34,7 @@ jobs:
 
           echo "DEBUGGING:"
           set +e
-          grep "${search_term}" ${files}
+          grep 'yarn test-audit' .gitlab-ci.yml
           set -e
           echo -e "\n"
 
