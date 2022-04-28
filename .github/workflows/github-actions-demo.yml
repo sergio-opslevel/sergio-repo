@@ -16,6 +16,8 @@ jobs:
           search_term="'yarn test-audit'"
           files=$(find . -name '*.yml')
 
+          echo "SEARCH TERM: $search_term"
+
           service_name=$(jq .name package.json)
           echo "\nService name: ${service_name}\n"
 
