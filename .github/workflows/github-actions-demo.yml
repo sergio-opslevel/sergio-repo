@@ -18,16 +18,10 @@ jobs:
 
           # exclude *this* file (the one you're reading) since it's yml
           files=$(find . -name '*.yml' | grep -v '.github/workflows/')
-          echo "files: $files"
+          echo "files: ${files}"
 
-          set +e
 
-          grep --silent 'yarn test-audit' ${files}
-          result=$?
-
-          set -e
-
-          if [ result ]; then
+          if grep 'yarn test-audit' ${files}; then
             check_passed="true"
           else
             check_passed="false"
