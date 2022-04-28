@@ -17,18 +17,18 @@ jobs:
           files=$(find . -name '*.yml')
 
           service_name=$(jq .name package.json)
-          echo "Service name: ${service_name}"
+          echo "\nService name: ${service_name}\n"
 
           # Ensure *this* file (the one you're reading) is excluded since it will always match the search
           files=$(echo "${files}" | grep -v '.github/workflows/')
-          echo "files: ${files}"
+          echo "files: ${files}\n"
 
           if grep ${search_term} ${files}; then
             check_passed="true"
           else
             check_passed="false"
           fi
-          echo "Check passed: ${check_passed}"
+          echo "Check passed: ${check_passed}\n"
 
           payload={"\"service\": ${service_name}, \"has_yarn_test_audit\": ${check_passed} }"
           curl -i -X POST -d "${payload}" https://opslevel-sergio.ngrok.io/integrations/custom_event/50054f4a-5bd7-4bbb-b6cb-280b621ec3c3
