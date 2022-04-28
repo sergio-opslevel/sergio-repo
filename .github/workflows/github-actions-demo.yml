@@ -36,4 +36,4 @@ jobs:
           echo -e "Service name: ${service_name}\n"
 
           payload={"\"service\": ${service_name}, \"has_yarn_test_audit\": ${check_passed} }"
-          curl -i -s -X POST -d "${payload}" https://opslevel-sergio.ngrok.io/integrations/custom_event/50054f4a-5bd7-4bbb-b6cb-280b621ec3c3
+          curl -s -X POST -d "${payload}" https://opslevel-sergio.ngrok.io/integrations/custom_event/50054f4a-5bd7-4bbb-b6cb-280b621ec3c3
