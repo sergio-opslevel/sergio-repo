@@ -13,7 +13,7 @@ jobs:
 
       - name: "Perform the check"
         run: |
-          search_term="'yarn test-audit'"
+          search_term='yarn test-audit'
           files=$(find . -name '*.yml')
 
           echo "SEARCH TERM: $search_term"
@@ -25,7 +25,7 @@ jobs:
           files=$(echo "${files}" | grep -v '.github/workflows/')
           echo -e "files: ${files}\n"
 
-          if grep ${search_term} ${files}; then
+          if grep "${search_term}" ${files}; then
             check_passed="true"
           else
             check_passed="false"
