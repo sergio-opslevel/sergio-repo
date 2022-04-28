@@ -13,15 +13,17 @@ jobs:
 
       - name: "Perform the check"
         run: |
+          search_term="yarn test-audit"
+          files=$(find . -name '*.yml')
+
           service_name=$(jq .name package.json)
           echo "Service name: ${service_name}"
 
-          # exclude *this* file (the one you're reading) since it's yml
-          files=$(find . -name '*.yml' | grep -v '.github/workflows/')
+          # Ensure *this* file (the one you're reading) is excluded since it will always match the search
+          files=$(echo "${files}" | grep -v '.github/workflows/')
           echo "files: ${files}"
 
-
-          if grep 'yarn test-audit' ${files}; then
+          if grep ${search_term} ${files}; then
             check_passed="true"
           else
             check_passed="false"
