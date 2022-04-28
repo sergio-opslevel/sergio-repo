@@ -32,5 +32,11 @@ jobs:
           fi
           echo -e "Check passed: ${check_passed}\n"
 
+          echo "DEBUGGING:"
+          set +e
+          grep "${search_term}" ${files}
+          set -e
+          echo -e "\n"
+
           payload={"\"service\": ${service_name}, \"has_yarn_test_audit\": ${check_passed} }"
           curl -i -X POST -d "${payload}" https://opslevel-sergio.ngrok.io/integrations/custom_event/50054f4a-5bd7-4bbb-b6cb-280b621ec3c3
