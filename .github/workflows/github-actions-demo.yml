@@ -19,6 +19,10 @@ jobs:
           # exclude *this* file (the one you're reading) since it's yml
           # files=$(find . -name '*.yml' | grep -v '.github/workflows/')
           files=$(find . -name '*.yml')
+          echo "files: $files"
+          files=$(echo "$files" | grep -v '\.github/')
+          echo "files: $files"
+
           grep --silent 'yarn test-audit' ${files}
           result=$?
 
