@@ -19,6 +19,8 @@ jobs:
 
           files=$(find . -name '*.yml')
 
+          webhook_url="https://opslevel-sergio.ngrok.io/integrations/custom_event/50054f4a-5bd7-4bbb-b6cb-280b621ec3c3"
+
 
 
           # Exclude *this* file (the one you're reading) since it will always match the search
@@ -36,4 +38,5 @@ jobs:
           echo -e "Service name: ${service_name}\n"
 
           payload={"\"service\": ${service_name}, \"has_yarn_test_audit\": ${check_passed} }"
-          curl -s -X POST -d "${payload}" https://opslevel-sergio.ngrok.io/integrations/custom_event/50054f4a-5bd7-4bbb-b6cb-280b621ec3c3
+          echo -e "Submitting to OpsLevel:"
+          curl -w "\nResponse Status Code: %{http_code}\n" -s -X POST -d "${payload}" ${webhook_url}
