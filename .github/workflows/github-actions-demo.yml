@@ -39,4 +39,4 @@ jobs:
 
           payload={"\"service\": ${service_name}, \"has_yarn_test_audit\": ${check_passed} }"
           echo -e "Submitting to OpsLevel:"
-          curl -w "\nResponse Status Code: %{http_code}\n" -s -X POST -d "${payload}" ${webhook_url}
+          curl -w "\nHTTP %{http_code}\n" -s -X POST -d "${payload}" ${webhook_url}
