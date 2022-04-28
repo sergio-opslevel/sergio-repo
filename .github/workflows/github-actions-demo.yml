@@ -17,14 +17,15 @@ jobs:
           echo "Service name: ${service_name}"
 
           # exclude *this* file (the one you're reading) since it's yml
-          # files=$(find . -name '*.yml' | grep -v '.github/workflows/')
-          files=$(find . -name '*.yml')
+          files=$(find . -name '*.yml' | grep -v '.github/workflows/')
           echo "files: $files"
-          files=$(echo "$files" | grep -v '\.github/')
-          echo "files: $files"
+
+          set +e
 
           grep --silent 'yarn test-audit' ${files}
           result=$?
+
+          set -e
 
           if [ result ]; then
             check_passed="true"
